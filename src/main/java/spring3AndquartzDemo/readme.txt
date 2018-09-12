@@ -1,0 +1,1 @@
+这个案例是采用MethodInvokingJobDetailFactoryBean和CronTriggerFactoryBean触发器的模式

@@ -19,7 +19,7 @@
 
 	<!-- 这里注意，quartz的版本必须使用2.0以前的版本，最高使用到了1.8.6 -->
 	<bean id="jobDetailBean"
-		class="org.springframework.scheduling.quartz.JobDetailBean">
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
 
 		<property name="jobClass"
 			value="spring3AndquartzDemo2.QuartzDemo"></property>
@@ -30,11 +30,10 @@
 		</property>
 	</bean>
 
-	<bean id="cronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+	<bean id="cronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="jobDetailBean"></property>
 		<property name="cronExpression" value="0/2 * * * * ?"/>
 	</bean>
-	
 
 	<bean id="scheduledFactoryBean"
 		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">

@@ -17,12 +17,18 @@
 
 	<bean id="someData" class="spring3AndquartzDemo2.JobData"></bean>
 
-	<!-- 这里注意，quartz的版本必须使用2.0以前的版本，最高使用到了1.8.6 -->
-	<bean id="jobDetailBean"
-		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
-
-		<property name="jobClass"
-			value="spring3AndquartzDemo2.QuartzDemo"></property>
+	<!-- 
+		这里注意，quartz使用的是2.0版本，那么就必须使用
+		JobDetailFactoryBean,CronTriggerFactoryBean
+		不仅可以在2.x及以上版本使用，还可以1.x版本
+		
+		原来的JobDetailBean和CronTriggerBean只能在1.x版本使用。
+	-->
+	<bean id="jobDetailBean" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="spring3AndquartzDemo2.QuartzDemo"></property>
+		
+		<!-- 少了一下配置，程序运行会报错： Jobs added with no trigger must be durable. -->
+		<property name="durability" value="true"/>
 		<property name="jobDataAsMap">
 			<map>
 				<entry key="jobData" value-ref="someData"></entry>

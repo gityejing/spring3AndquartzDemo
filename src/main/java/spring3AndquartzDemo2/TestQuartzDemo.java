@@ -17,7 +17,6 @@ public class TestQuartzDemo {
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring-quartz4.xml");
 		System.out.println("启动Task:");
 		System.out.println("请输进 exit 结束Task:");
-
 		//A处
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
